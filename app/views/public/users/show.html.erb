@@ -1,0 +1,8 @@
+<h1>マイページ</h1>
+<h4>登録情報</h4><%= link_to "編集する", edit_user_path(@user.id), class: "btn btn-sm btn-success" %>
+
+<p>プロフィール画像：<%= image_tag @user.get_profile_image(100,100) %></p>
+<p>ニックネーム: <%= @user.nickname %></p>
+<p>メールアドレス:<%= @user.email %></p>
+<p>年齢: <%= @user.birthday %></p>
+<p>性別: <%= @user.sex %></p>

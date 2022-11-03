@@ -1,0 +1,12 @@
+<h3><%= @user.nickname %>さんの会員情報編集</h3>
+<%= form_with model:@user, url:admin_user_path(@user.id) do |f| %>
+<p>会員ID <%= @user.id %></p>
+<p>ニックネーム　<%= @user.nickname %></p>
+<p>メールアドレス <%= @user.email %></p>
+<p>会員ステータス</p>
+  <%= f.radio_button :is_deleted, 'false' %>
+  <%= f.label :is_deleted, '有効' %>
+  <%= f.radio_button :is_deleted, 'true' %>
+  <%= f.label :is_deleted, '退会' %>
+  <%= f.submit "変更を保存", class: "btn btn-success" %>
+<% end %>
