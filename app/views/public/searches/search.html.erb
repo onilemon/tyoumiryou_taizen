@@ -1,0 +1,6 @@
+<% @items.each do |item| %>
+  <%= image_tag item.image, size: "100x100" %>
+  商品名：<%= item.name %>
+  商品説明：<%= item.introduction %>
+<% end %>
+<%= link_to "気になる調味料に追加", items_path, class: "btn btn-success" %>

@@ -1,0 +1,19 @@
+<h2>プロフィール</h2>
+<%= render 'public/users/form', user: @user %>
+
+<h2>調味料を探す</h2>
+<%= form_with url: items_path, method: :get, local: true do |f| %>
+  <%= f.collection_select(:genre_id, Genre.all, :id, :name, prompt: "ジャンル選択") %>
+  <%= f.text_field :keyword, value: @keyword %>
+  <%= f.submit "検索" %>
+<% end %>
+<h2>気になる調味料</h2>
+<% current_user.attentions.each do |attention| %>
+  商品名：<%= attention.item.name %>
+  ジャンル名：<%= attention.item.genre.name %>
+  <%= form_with model:use do |f| %>
+    <% f.hidden_field :item, :value => item.id %>
+    <% f.submit %>
+  <%end%>
+<% end %>
+<h2>利用した調味料</h2>

@@ -1,0 +1,10 @@
+<strong><h3>本当に退会しますか？</h3></strong>
+  <div class="text-center  mb-3">
+    退会すると、会員情報登録や、<br>
+    登録したフォローやフォロワー履歴が閲覧できなくなります。<br>
+    退会する場合は、「退会する」をクリックしてください。
+  </div>
+  <div class="row justify-content-center">
+    <%= link_to "退会しない", user_path(current_user), class: "btn btn-sm btn-primary mr-3" %>
+    <%= link_to "退会する", users_withdrawal_path, method: :patch, "data-confirm" => "本当に退会しますか？", class: "btn btn-sm btn-danger" %>
+  </div>
