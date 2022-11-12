@@ -10,12 +10,15 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root to: 'homes#top'
+    post "use" => "uses#use"
+    post "attention" => "attentious#attention"
     get "search" => "searches#search"
     get "/about" => "homes#about"
     get "/users/unsubscribe" => "users#unsubscribe"
     patch "/users/withdrawal" => "users#withdrawal"
     resources :items
-    resources :posts
+    resources :posts, only: [:create]
+    get "post/:item_id" => "posts#new", as: "new_post"
     resources :users do
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
@@ -30,7 +33,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'users#index'
     resources :items
-    resources :genres, only: [:create, :index, :edit, :update]
+    resources :genres, only: [:create, :index, :edit, :update, :destroy]
     resources :users, only: [:index, :show, :edit, :update]
     resources :reviews, only: [:index, :show, :edit, :update, :destroy]
   end

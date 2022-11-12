@@ -1,0 +1,15 @@
+<%= image_tag @item.image, size: "100x100" %>
+  <p>評価</p>
+      <div id="post_raty"></div>
+   <script>
+    let elem = document.querySelector('#post_raty');
+    let opt = {
+     starOn: "<%= asset_path('star-on.png') %>",
+     starOff: "<%= asset_path('star-off.png') %>",
+     readOnly: true,
+     score: <%= 3.0 %>
+     };
+     raty(elem,opt);
+   </script>
+ <p>コメント</p>
+ <%= @post.comment %>

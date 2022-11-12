@@ -1,7 +1,11 @@
 <h3>商品一覧</h3>
 <%= link_to "商品新規登録", new_admin_item_path %>
 <% @items.each do |item| %>
-  <%= image_tag item.image, size: "80x80" %>
+  <% if item.image.attached? %>
+    <%= image_tag item.image, size: "100x100" %>
+  <% else %>
+    <%= image_tag 'no_image', size: "100x100" %>
+  <% end %>
   商品名: <%= link_to item.name, admin_item_path(item.id) %>
   ジャンル: <%= item.genre.name %>
 <% end %>

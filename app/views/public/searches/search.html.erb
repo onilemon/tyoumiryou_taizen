@@ -1,6 +1,11 @@
+<%= form_with url: attention_path, method: :post, local: true do |f| %>
 <% @items.each do |item| %>
+  <%= f.check_box :item_ids, { multiple: true }, item.id, false %>
   <%= image_tag item.image, size: "100x100" %>
-  商品名：<%= item.name %>
-  商品説明：<%= item.introduction %>
+  <p>商品名</p>
+  <%= item.name %>
+  <p>商品説明</p>
+  <%= item.introduction %><br>
 <% end %>
-<%= link_to "気になる調味料に追加", items_path, class: "btn btn-success" %>
+  <%= f.submit "気になる調味料に追加" %>
+<% end %>

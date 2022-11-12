@@ -1,10 +1,19 @@
-<%= form_with model: @post, local: true do |form| %>
+<%= form_with model: @post, url: posts_path, method: :post, local: true do |f| %>
+ <%= image_tag @item.image, size: "100x100" %>
+  <label>評価：</label>
+  <div id="post_raty"></div>
+   <script>
+    let elem = document.querySelector('#post_raty');
+    let opt = {  
+     starOn: "<%= asset_path('star-on.png') %>",
+     starOff: "<%= asset_path('star-off.png') %>",
 
-<p><%= form.label :comment %><br>
-<%= f.text_area :comment %>
-</p>
-
-<p><%= f.submit "投稿する %>
-</p>
-
+     };
+     raty(elem,opt);
+   </script>
+ </div>
+ <%= f.label "コメント" %><br>
+ <%= f.text_area :comment %>
+ <%= f.hidden_field :item_id %>
+ <%= f.submit "投稿する" %>
 <% end %>

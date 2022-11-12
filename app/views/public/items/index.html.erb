@@ -2,18 +2,38 @@
 <%= render 'public/users/form', user: @user %>
 
 <h2>調味料を探す</h2>
-<%= form_with url: items_path, method: :get, local: true do |f| %>
+<%= form_with url: search_path, method: :get, local: true do |f| %>
   <%= f.collection_select(:genre_id, Genre.all, :id, :name, prompt: "ジャンル選択") %>
   <%= f.text_field :keyword, value: @keyword %>
   <%= f.submit "検索" %>
 <% end %>
 <h2>気になる調味料</h2>
-<% current_user.attentions.each do |attention| %>
-  商品名：<%= attention.item.name %>
-  ジャンル名：<%= attention.item.genre.name %>
-  <%= form_with model:use do |f| %>
-    <% f.hidden_field :item, :value => item.id %>
-    <% f.submit %>
-  <%end%>
-<% end %>
+  <% @attentions.each do |attention| %>
+    <% if attention.user_id == current_user.id %>
+      <%= image_tag attention.item.image, size: "100x100" %>
+      <p>商品名</p>
+      <%= attention.item.name %>
+      <%= link_to "利用した調味料に追加", new_post_path(attention.item_id) %><br>
+    <% end %>
+  <% end %>
 <h2>利用した調味料</h2>
+  <% @posts.each do |user_post| %>
+    <%= image_tag user_post.item.image, size: "100x100" %>
+    <p>商品名</p>
+      <%= user_post.item.name %>
+    <p>評価</p>
+      <div id="post_raty"></div>
+   <script>
+    let elem = document.querySelector('#post_raty');
+    let opt = {
+     starOn: "<%= asset_path('star-on.png') %>",
+     starOff: "<%= asset_path('star-off.png') %>",
+     readOnly: true,
+     score: <%= 3.0 %>
+     };
+     raty(elem,opt);
+   </script>
+   <%= link_to "投稿詳細画面", item_path(user_post.id) %>
+  <% end %>
+
+

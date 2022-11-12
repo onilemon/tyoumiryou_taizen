@@ -3,3 +3,4 @@
   <%= f.text_field :name %>
   <%= f.submit "変更を保存", class: "btn btn-success" %>
 <% end %>
+<%= link_to '削除する', admin_genre_path(@genre.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
