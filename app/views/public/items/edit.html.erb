@@ -1,4 +1,5 @@
-<%= form_with model: @post, url: posts_path, method: :post, local: true do |f| %>
+<h2>編集画面</h2>
+<%= form_with model: @post, url: item_path, method: :patch, local: true do |f| %>
  <%= image_tag @item.image, size: "100x100" %>
   <label>評価：</label>
   <div>
@@ -11,7 +12,7 @@
      starOn: "<%= asset_path('star-on.png') %>",
      starOff: "<%= asset_path('star-off.png') %>",
      target: '#hint2',
-     targetType: 'number'
+     targetType: 'number',
      };
      raty(elem,opt);
    </script>
@@ -20,5 +21,5 @@
  <%= f.label "コメント" %><br>
  <%= f.text_area :comment %>
  <%= f.hidden_field :item_id %>
- <%= f.submit "投稿する" %>
+ <%= f.submit "編集する" %>
 <% end %>

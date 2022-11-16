@@ -2,14 +2,15 @@
   <p>評価</p>
       <div id="post_raty"></div>
    <script>
-    let elem = document.querySelector('#post_raty');
-    let opt = {
+    var elem = document.querySelector('#post_raty');
+    var opt = {
      starOn: "<%= asset_path('star-on.png') %>",
      starOff: "<%= asset_path('star-off.png') %>",
      readOnly: true,
-     score: <%= 3.0 %>
+     score: <%= @post.star.present? ? @post.star : "0" %>
      };
      raty(elem,opt);
    </script>
  <p>コメント</p>
  <%= @post.comment %>
+ <%= link_to "編集する", edit_item_path(@item.id), data: { "turbolinks" => false } %>

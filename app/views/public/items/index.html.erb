@@ -4,7 +4,7 @@
 <h2>調味料を探す</h2>
 <%= form_with url: search_path, method: :get, local: true do |f| %>
   <%= f.collection_select(:genre_id, Genre.all, :id, :name, prompt: "ジャンル選択") %>
-  <%= f.text_field :keyword, value: @keyword %>
+  <%= f.text_field :keyword, value: @keyword, placeholder: "商品名検索" %>
   <%= f.submit "検索" %>
 <% end %>
 <h2>気になる調味料</h2>
@@ -13,7 +13,8 @@
       <%= image_tag attention.item.image, size: "100x100" %>
       <p>商品名</p>
       <%= attention.item.name %>
-      <%= link_to "利用した調味料に追加", new_post_path(attention.item_id) %><br>
+      <%= link_to "利用した調味料に追加", new_post_path(attention.item_id), data: { "turbolinks" => false } %>
+      <%= link_to "気になる調味料から削除", item_attentions_path(attention.item_id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %><br>
     <% end %>
   <% end %>
 <h2>利用した調味料</h2>
@@ -22,18 +23,16 @@
     <p>商品名</p>
       <%= user_post.item.name %>
     <p>評価</p>
-      <div id="post_raty"></div>
+      <div id="post_raty-<%= user_post.id %>"></div>
    <script>
-    let elem = document.querySelector('#post_raty');
-    let opt = {
+    var elem = document.querySelector('#post_raty-<%= user_post.id %>');
+    var opt = {
      starOn: "<%= asset_path('star-on.png') %>",
      starOff: "<%= asset_path('star-off.png') %>",
      readOnly: true,
-     score: <%= 3.0 %>
+     score: <%= user_post.star.present? ? user_post.star : "0" %>
      };
      raty(elem,opt);
    </script>
-   <%= link_to "投稿詳細画面", item_path(user_post.id) %>
+   <%= link_to "投稿詳細画面", item_path(user_post.item) %><br>
   <% end %>
-
-

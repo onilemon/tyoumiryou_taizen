@@ -11,13 +11,16 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     post "use" => "uses#use"
-    post "attention" => "attentious#attention"
+    post "attention" => "attentions#attention"
+
     get "search" => "searches#search"
     get "/about" => "homes#about"
     get "/users/unsubscribe" => "users#unsubscribe"
     patch "/users/withdrawal" => "users#withdrawal"
-    resources :items
-    resources :posts, only: [:create]
+    resources :items do
+      resource :attentions, only: [:destroy]
+    end
+    resources :posts, only: [:create, :index]
     get "post/:item_id" => "posts#new", as: "new_post"
     resources :users do
       resource :relationships, only: [:create, :destroy]

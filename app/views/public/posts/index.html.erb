@@ -1,0 +1,7 @@
+<h2>評価ランキング</h2>
+<% @items.each.with_index(1) do |item, i| %>
+  <%= image_tag item.image, size: "100x100" %>
+  <%= i %>位
+  <%= item.name %>
+  評価<%= item.average %><br>
+<% end %>

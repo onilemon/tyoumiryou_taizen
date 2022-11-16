@@ -10,7 +10,7 @@ class Public::ItemsController < ApplicationController
 
   def index
     @posts = current_user.posts
-    @attentions = Attention.all
+    @attentions = current_user.attentions
     @user = current_user
     @items = Item.all
     if params[:genre_id].present?
@@ -29,13 +29,38 @@ class Public::ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    @posts = current_user.posts
-    @post = Post.find(params[:id])
+    @post = current_user.posts.find_by(item_id: @item.id)
+  end
+
+  def edit
+     @item = Item.find(params[:id])
+     @post = current_user.posts.find_by(item_id: @item.id)
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    @post = current_user.posts.find_by(item_id: @item.id)
+    @post.star = params[:score]
+    if @post.update(post_params)
+      redirect_to item_path(@item.id)
+    else
+      render edit
+    end
+  end
+
+  def destroy
+    @item = Item.find(params[:id])
+    @item.destroy
+    redirect_to items_path
   end
 
   private
 
   def item_params
     params.require(:item).permit(:image, :name, :introduction, :genre_id, :item_id)
+  end
+
+  def post_params
+    params.require(:post).permit(:comment, :star, :item_id)
   end
 end

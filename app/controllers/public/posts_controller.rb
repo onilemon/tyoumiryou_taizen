@@ -8,8 +8,23 @@ class Public::PostsController < ApplicationController
 
   def create
     @post = current_user.posts.new(post_params)
-    @post.save
-    redirect_to items_path
+    @post.star = params[:score]
+    if @post.save
+      Attention.find_by(item_id: @post.item_id)&.destroy
+      redirect_to items_path
+    else
+      render :new
+    end
+  end
+
+  def index
+    all_items = Item.all
+    @items = Post.group(:item_id).average(:star).map do |k, v|
+      item = all_items.find_by(id: k)
+      item.average = v.to_f.round(1)
+      item
+    end
+    @items = @items.sort_by{|o| o.average }.reverse
   end
 
 private

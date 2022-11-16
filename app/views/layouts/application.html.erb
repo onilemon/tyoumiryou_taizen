@@ -40,11 +40,11 @@
         </li>
 
         <li class="nav-item list-unstyled ml-4">
-          <%= link_to "評価ランキング", class:"btn btn-light" %>
+          <%= link_to "評価ランキング", posts_path, class:"btn btn-light" %>
         </li>
 
         <li class="nav-item list-unstyled ml-4">
-          <%= link_to "投稿一覧", items_path, class:"btn btn-light" %>
+          <%= link_to "商品投稿", items_path, class:"btn btn-light" %>
         </li>
 
         <li class="nav-item list-unstyled ml-4">
@@ -68,6 +68,7 @@
         </li>
       <% end %>
       <p class="border-bottom"></p>
+      <%= notice %>
     </header>
     <%= yield %>
   </body>
