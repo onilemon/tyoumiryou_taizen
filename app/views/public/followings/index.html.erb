@@ -1,0 +1,5 @@
+<h1>フォロー</h1>
+<% @followings.each do |following| %>
+  <%= image_tag following.get_profile_image(100,100) %>
+  <%= following.nickname %>
+<% end %>

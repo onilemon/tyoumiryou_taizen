@@ -24,15 +24,15 @@
       <%= user_post.item.name %>
     <p>評価</p>
       <div id="post_raty-<%= user_post.id %>"></div>
-   <script>
-    var elem = document.querySelector('#post_raty-<%= user_post.id %>');
-    var opt = {
-     starOn: "<%= asset_path('star-on.png') %>",
-     starOff: "<%= asset_path('star-off.png') %>",
-     readOnly: true,
-     score: <%= user_post.star.present? ? user_post.star : "0" %>
-     };
-     raty(elem,opt);
-   </script>
+       <script>
+        var elem = document.querySelector('#post_raty-<%= user_post.id %>');
+        var opt = {
+         starOn: "<%= asset_path('star-on.png') %>",
+         starOff: "<%= asset_path('star-off.png') %>",
+         readOnly: true,
+         score: <%= user_post.star.present? ? user_post.star : "0" %>
+         };
+         raty(elem,opt);
+       </script>
    <%= link_to "投稿詳細画面", item_path(user_post.item) %><br>
   <% end %>

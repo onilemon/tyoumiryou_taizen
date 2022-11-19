@@ -27,6 +27,11 @@ class Public::PostsController < ApplicationController
     @items = @items.sort_by{|o| o.average }.reverse
   end
 
+  def show
+    @item = Item.find(params[:id])
+    @posts = Item.find(params[:id]).posts
+  end
+
 private
   def post_params
     params.require(:post).permit(:comment, :star, :item_id)

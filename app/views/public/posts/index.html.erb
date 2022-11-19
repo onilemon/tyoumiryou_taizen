@@ -3,5 +3,6 @@
   <%= image_tag item.image, size: "100x100" %>
   <%= i %>位
   <%= item.name %>
-  評価<%= item.average %><br>
+  評価<%= item.average %>
+  <%= link_to "みんなの評価コメント", post_path(item.id) %><br>
 <% end %>

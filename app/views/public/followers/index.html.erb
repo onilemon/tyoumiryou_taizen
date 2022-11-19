@@ -1,0 +1,5 @@
+<h1>フォロワー</h1>
+<% @followers.each do |follower| %>
+  <%= image_tag follower.get_profile_image(100,100) %>
+  <%= follower.nickname %>
+<% end %>

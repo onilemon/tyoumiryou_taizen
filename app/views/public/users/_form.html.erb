@@ -3,3 +3,5 @@
 <p>メールアドレス:<%= @user.email %></p>
 <p>年齢: <%= @user.birthday %>歳</p>
 <p>性別: <%= @user.sex %></p>
+<p><%= link_to @user.followings.count, followings_index_path %> フォロー</p>
+<p><%= link_to @user.followers.count, followers_index_path %> フォロワー</p>

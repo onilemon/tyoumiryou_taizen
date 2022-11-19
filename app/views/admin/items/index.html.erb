@@ -1,5 +1,5 @@
 <h3>商品一覧</h3>
-<%= link_to "商品新規登録", new_admin_item_path %>
+<p><%= link_to "商品新規登録", new_admin_item_path %></p>
 <% @items.each do |item| %>
   <% if item.image.attached? %>
     <%= image_tag item.image, size: "100x100" %>
@@ -7,5 +7,5 @@
     <%= image_tag 'no_image', size: "100x100" %>
   <% end %>
   商品名: <%= link_to item.name, admin_item_path(item.id) %>
-  ジャンル: <%= item.genre.name %>
+  ジャンル: <%= item.genre.name %><br>
 <% end %>

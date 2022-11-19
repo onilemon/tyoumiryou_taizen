@@ -1,0 +1,5 @@
+<% @posts.each do |user_post| %>
+  商品名：<%= user_post.item.name %>
+  コメント：<%= user_post.comment %>
+  <%= link_to "コメントを削除", admin_post_path(user_post.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger" %><br>
+<% end %>

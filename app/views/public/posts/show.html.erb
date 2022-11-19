@@ -1,0 +1,28 @@
+<h2>コメント一覧</h2>
+<% @posts.each do |user_post| %>
+  <div>
+    <%= image_tag user_post.user.get_profile_image(100,100) %>
+    <%= user_post.user.nickname %>
+    <p>評価</p>
+    <div id="post_raty-<%= user_post.id %>"></div>
+     <script>
+      var elem = document.querySelector('#post_raty-<%= user_post.id %>');
+      var opt = {
+       starOn: "<%= asset_path('star-on.png') %>",
+       starOff: "<%= asset_path('star-off.png') %>",
+       readOnly: true,
+       score: <%= user_post.star.present? ? user_post.star : "0" %>
+       };
+       raty(elem,opt);
+     </script>
+     <p>コメント</p>
+      <%= user_post.comment %>
+      <% if current_user.id != user_post.user.id %>
+          <% if current_user.following?(user_post.user) %>
+            <%= link_to "フォロー外す", user_relationships_path(user_post.user), method: :delete %>
+          <% else %>
+            <%= link_to "フォローする", user_relationships_path(user_post.user), method: :post %>
+          <% end %>
+      <% end %>
+  </div>
+<% end %>

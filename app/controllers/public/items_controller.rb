@@ -9,6 +9,7 @@ class Public::ItemsController < ApplicationController
   end
 
   def index
+    @users = User.all
     @posts = current_user.posts
     @attentions = current_user.attentions
     @user = current_user

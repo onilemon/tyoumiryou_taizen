@@ -12,7 +12,6 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     post "use" => "uses#use"
     post "attention" => "attentions#attention"
-
     get "search" => "searches#search"
     get "/about" => "homes#about"
     get "/users/unsubscribe" => "users#unsubscribe"
@@ -20,13 +19,15 @@ Rails.application.routes.draw do
     resources :items do
       resource :attentions, only: [:destroy]
     end
-    resources :posts, only: [:create, :index]
+    resources :posts, only: [:create, :index, :show]
     get "post/:item_id" => "posts#new", as: "new_post"
     resources :users do
-      resource :relationships, only: [:create, :destroy]
+      resource :relationships
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
     end
+    get 'followers/index'
+    get 'followings/index'
   end
 
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
@@ -38,6 +39,7 @@ Rails.application.routes.draw do
     resources :items
     resources :genres, only: [:create, :index, :edit, :update, :destroy]
     resources :users, only: [:index, :show, :edit, :update]
+    resources :posts, only: [:index, :show, :destroy]
     resources :reviews, only: [:index, :show, :edit, :update, :destroy]
   end
 end
