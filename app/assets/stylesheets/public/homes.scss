@@ -2,14 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 .title {
-  font-family: cursive;
+  font-family: "Nikukyu";
 }
 
 .cover {
   height: 100%;
   width: 100%;
   display: table;
-  background-image: url(/assets/tyoumiryou_topmain.jpg);
+  background-image: url(/assets/tyoumiryoutop.jpg);
   background-color:rgba(255,255,255,0.4);
   background-blend-mode:lighten;
   background-size: 100% 100%;

@@ -12,61 +12,69 @@
 
   <body>
     <header>
-      <a class="navbar-brand p-1" href="/"><%= image_tag 'tyoumiryou_logo.jpeg', size: '50x50' %></a>
-      <% if admin_signed_in? %>
-        <li class="nav-item list-unstyled ml-4">
-          <%= link_to "商品一覧", admin_items_path, class:"btn btn-light" %>
-        </li>
+      <nav class="navbar navbar-expand-lg ">
+        <div class="container">
+          <a class="navbar-brand p-1" href="/"><%= image_tag 'tyoumiryou_logo.jpeg', size: '80x80' %></a>
+          <div class="row justify-content-evenly">
+            <% if admin_signed_in? %>
+              <li class="nav-item list-unstyled ml-4">
+                <%= link_to "商品一覧", admin_items_path, class:"btn btn-light" %>
+              </li>
 
-        <li class="nav-item list-unstyled ml-4">
-          <%= link_to "投稿一覧", admin_posts_path, class:"btn btn-light" %>
-        </li>
+              <li class="nav-item list-unstyled ml-4">
+                <%= link_to "投稿一覧", admin_posts_path, class:"btn btn-light" %>
+              </li>
 
-        <li class="nav-item list-unstyled ml-4">
-          <%= link_to "会員一覧", admin_root_path, class:"btn btn-light" %>
-        </li>
+              <li class="nav-item list-unstyled ml-4">
+                <%= link_to "会員一覧", admin_root_path, class:"btn btn-light" %>
+              </li>
 
-        <li class="nav-item list-unstyled ml-4">
-          <%= link_to "ジャンル一覧", admin_genres_path, class:"btn btn-light" %>
-        </li>
+              <li class="nav-item list-unstyled ml-4">
+                <%= link_to "ジャンル一覧", admin_genres_path, class:"btn btn-light" %>
+              </li>
 
-        <li class="nav-item list-unstyled ml-4">
-          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"btn btn-light" %>
-      　</li>
-      <% elsif user_signed_in? %>
-        <%= "ようこそ、#{current_user.nickname}さん！" %>
-        <li class="nav-item list-unstyled ml-4">
-          <%= link_to "マイページ", user_path(current_user.id), class:"btn btn-light" %>
-        </li>
+              <li class="nav-item list-unstyled ml-4">
+                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"btn btn-danger" %>
+            　</li>
+            <% elsif user_signed_in? %>
+              <div class= "text-white">
+              <%= "ようこそ、#{current_user.nickname}さん！" %></div>
 
-        <li class="nav-item list-unstyled ml-4">
-          <%= link_to "評価ランキング", posts_path, class:"btn btn-light" %>
-        </li>
+              <li class="nav-item list-unstyled ml-4">
+                <%= link_to "マイページ", user_path(current_user.id), class:"btn btn-light" %>
+              </li>
 
-        <li class="nav-item list-unstyled ml-4">
-          <%= link_to "商品投稿", items_path, class:"btn btn-light" %>
-        </li>
+              <li class="nav-item list-unstyled ml-4">
+                <%= link_to "評価ランキング", posts_path, class:"btn btn-light" %>
+              </li>
 
-        <li class="nav-item list-unstyled ml-4">
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"btn btn-light" %>
-        </li>
-      <% else %>
-        <li class="nav-item list-unstyled ml-4">
-          <%= link_to "About", about_path, class:"btn btn-light" %>
-        </li>
+              <li class="nav-item list-unstyled ml-4">
+                <%= link_to "商品投稿", items_path, class:"btn btn-light" %>
+              </li>
 
-        <li class="nav-item list-unstyled ml-4">
-          <%= link_to "商品一覧", items_path, class:"btn btn-light" %>
-        </li>
+              <li class="nav-item list-unstyled ml-4">
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"btn btn-danger" %>
+              </li>
+            <% else %>
+              <li class="nav-item list-unstyled ml-4">
+                <%= link_to "About", about_path, class:"btn btn-light" %>
+              </li>
 
-        <li class="nav-item list-unstyled ml-4">
-          <%= link_to "新規登録", new_user_registration_path, class:"btn btn-light" %>
-        </li>
+              <li class="nav-item list-unstyled ml-4">
+                <%= link_to "商品一覧", items_path, class:"btn btn-light" %>
+              </li>
 
-        <li class="nav-item list-unstyled ml-4">
-          <%= link_to "ログイン", user_session_path, class:"btn btn-light" %>
-        </li>
-      <% end %>
+              <li class="nav-item list-unstyled ml-4">
+                <%= link_to "新規登録", new_user_registration_path, class:"btn btn-primary" %>
+              </li>
+
+              <li class="nav-item list-unstyled ml-4">
+                <%= link_to "ログイン", user_session_path, class:"btn btn-success" %>
+              </li>
+            <% end %>
+          </div>
+        </div>
+      </nav>
       <p class="border-bottom"></p>
       <%= notice %>
     </header>

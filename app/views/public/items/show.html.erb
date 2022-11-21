@@ -1,16 +1,33 @@
-<%= image_tag @item.image, size: "100x100" %>
-  <p>評価</p>
+<div class="cover-show">
+ <div class="container">
+  <div class="row justify-content-center">
+   <h2 class="font-weight-normal mt-5 mb-5">投稿詳細画面</h2>
+  </div>
+  <div class= "row justify-content-center">
+   <div class="row flex-column">
+    <%= image_tag @item.image, size: "200x200" %>
+    <div class="form-group">
+     <label class="form-label">評価:</label>
       <div id="post_raty"></div>
-   <script>
-    var elem = document.querySelector('#post_raty');
-    var opt = {
-     starOn: "<%= asset_path('star-on.png') %>",
-     starOff: "<%= asset_path('star-off.png') %>",
-     readOnly: true,
-     score: <%= @post.star.present? ? @post.star : "0" %>
-     };
-     raty(elem,opt);
-   </script>
- <p>コメント</p>
- <%= @post.comment %>
- <%= link_to "編集する", edit_item_path(@item.id), data: { "turbolinks" => false } %>
+     <script>
+      var elem = document.querySelector('#post_raty');
+      var opt = {
+       starOn: "<%= asset_path('star-on.png') %>",
+       starOff: "<%= asset_path('star-off.png') %>",
+       readOnly: true,
+       score: <%= @post.star.present? ? @post.star : "0" %>
+       };
+       raty(elem,opt);
+     </script>
+    </div>
+     <div class="form-group">
+      <div><label class="form-label">コメント</label></div>
+       <div><%= @post.comment %></div>
+     </div>
+      <div class="form-group">
+       <%= link_to "編集する", edit_item_path(@item.id), data: { "turbolinks" => false }, class: "btn btn-sm btn-success" %>
+      </div>
+   </div>
+  </div>
+ </div>
+</div>
