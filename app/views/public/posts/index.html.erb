@@ -1,8 +1,16 @@
-<h2>評価ランキング</h2>
-<% @items.each.with_index(1) do |item, i| %>
-  <%= image_tag item.image, size: "100x100" %>
-  <%= i %>位
-  <%= item.name %>
-  評価<%= item.average %>
-  <%= link_to "みんなの評価コメント", post_path(item.id) %><br>
-<% end %>
+<div class="container">
+  <div class="row justify-content-start">
+    <h2>評価ランキング</h2>
+    <table class="table align_middle">
+      <% @items.each.with_index(1) do |item, i| %>
+        <tr>
+          <td><%= image_tag item.image, size: "100x100" %></td>
+          <td><%= i %>位</td>
+          <td><%= item.name %></td>
+          <td>評価<%= item.average %></td>
+          <td><%= link_to "みんなの評価コメント", post_path(item.id) %><br></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

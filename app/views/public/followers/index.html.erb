@@ -1,5 +1,16 @@
-<h1>フォロワー</h1>
-<% @followers.each do |follower| %>
-  <%= image_tag follower.get_profile_image(100,100) %>
-  <%= follower.nickname %>
-<% end %>
+<div class="container">
+  <div class="row justify-content-center">
+    <h1>フォロワー一覧</h1>
+  </div>
+  <div class="row justify-content-center">
+    <% @followers.each do |follower| %>
+      <table class= "table">
+        <tr>
+          <td><%= link_to image_tag(follower.get_profile_image(100,100)), follower_path(follower.id) %></td>
+          <td><%= follower.nickname %></td>
+          <td><%= follower.sex %></td>
+        </tr>
+      </table>
+    <% end %>
+  </div>
+</div>

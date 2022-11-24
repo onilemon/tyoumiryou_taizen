@@ -26,8 +26,8 @@ Rails.application.routes.draw do
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
     end
-    get 'followers/index'
-    get 'followings/index'
+    resources :followers, only: [:index, :show]
+    resources :followings, only: [:index, :show]
   end
 
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {

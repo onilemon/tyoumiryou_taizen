@@ -1,25 +1,29 @@
-<h2>編集画面</h2>
-<%= form_with model: @post, url: item_path, method: :patch, local: true do |f| %>
- <%= image_tag @item.image, size: "100x100" %>
-  <label>評価：</label>
-  <div>
-   <span id="post_raty"></span>
-   <span id="hint2"></span>
+<div class="container">
+  <div class="row justify-content-center">
+   <h2>編集画面</h2>
   </div>
-   <script>
-    let elem = document.querySelector('#post_raty');
-    let opt = {
-     starOn: "<%= asset_path('star-on.png') %>",
-     starOff: "<%= asset_path('star-off.png') %>",
-     target: '#hint2',
-     targetType: 'number',
-     };
-     raty(elem,opt);
-   </script>
-
- </div>
- <%= f.label "コメント" %><br>
- <%= f.text_area :comment %>
- <%= f.hidden_field :item_id %>
- <%= f.submit "編集する" %>
-<% end %>
+  <div class="row justify-content-center">
+   <%= form_with model: @post, url: item_path, method: :patch, local: true do |f| %>
+    <%= image_tag @item.image, size: "200x200" %>
+     <div><label>評価：</label></div>
+     <div>
+      <span id="post_raty"></span>
+      <span id="hint2"></span>
+     </div>
+     <script>
+      let elem = document.querySelector('#post_raty');
+      let opt = {
+       starOn: "<%= asset_path('star-on.png') %>",
+       starOff: "<%= asset_path('star-off.png') %>",
+       target: '#hint2',
+       targetType: 'number',
+       };
+       raty(elem,opt);
+     </script>
+     <%= f.label "コメント" %><br>
+     <%= f.text_area :comment %>
+     <%= f.hidden_field :item_id %><br>
+     <%= f.submit "編集する", class: "btn btn-sm btn-success" %>
+   <% end %>
+  </div>
+</div>

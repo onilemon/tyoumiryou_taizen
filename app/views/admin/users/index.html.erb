@@ -1,11 +1,27 @@
-<h1>会員一覧</h1>
-<% @users.each do |user| %>
-<p>会員ID: <%= user.id %></p>
-<p>ニックネーム: <%= link_to user.nickname, admin_user_path(user.id) %></p>
-<p>メールアドレス: <%= user.email %></p>
-<p>ステータス: <% if user.is_deleted? %></p>
-                  <p class="text-secondary">退会</p>
+<div class="container">
+  <div class="row justify-content-center">
+   <h1>会員一覧</h1>
+  </div>
+  <table class= "table">
+   <tr>
+      <th>会員ID</th>
+      <th>ニックネーム</th>
+      <th>メールアドレス</th>
+      <th>ステータス</th>
+   </tr>
+   <% @users.each do |user| %>
+   <tr>
+      <td><%= user.id %></td>
+      <td><%= link_to user.nickname, admin_user_path(user.id) %></td>
+      <td><%= user.email %></td>
+      <td><% if user.is_deleted? %>
+            <p class="text-secondary">退会</p>
                <% else %>
                   <p class="text-success">有効</p>
                <% end %>
-<% end %>
+      </td>
+   </tr>
+   <% end %>
+  </table>
+ </div>
+</div>

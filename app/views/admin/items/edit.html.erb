@@ -1,13 +1,18 @@
-<h3>商品編集</h3>
-<%= form_with model: @item, url: admin_item_path do |f| %>
-  <p>商品画像</p>
-  
-  <%= f.file_field :image, accept: "image/*" %>
-  <p>商品名</p>
-  <%= f.text_field :name %>
-  <p>商品説明</p>
-  <%= f.text_area :introduction, class: 'form-control',size: "5x5" %>
-  <p>ジャンル</p>
-  <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい" %>
-  <%= f.submit '編集を保存', class: "btn btn-success" %>
-<% end %>
+<div class="container">
+  <div class="row justify-content-center">
+    <h3>商品編集</h3>
+  </div>
+  <div class="row justify-content-center">
+    <%= form_with model: @item, url: admin_item_path do |f| %>
+      <p>商品画像</p>
+      <%= f.file_field :image, accept: "image/*" %>
+      <p>商品名</p>
+      <%= f.text_field :name %>
+      <p>商品説明</p>
+      <%= f.text_area :introduction, class: 'form-control',size: "5x5" %>
+      <p>ジャンル</p>
+      <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい", class: "mb-4" %><br>
+      <%= f.submit '編集を保存', class: "btn btn-success" %>
+    <% end %>
+  </div>
+</div>

@@ -1,5 +1,16 @@
-<h1>フォロー</h1>
-<% @followings.each do |following| %>
-  <%= image_tag following.get_profile_image(100,100) %>
-  <%= following.nickname %>
-<% end %>
+<div class="container">
+  <div class="row justify-content-center">
+    <h1>フォロー一覧</h1>
+  </div>
+  <div class="row justify-content-center">
+    <% @followings.each do |following| %>
+      <table class="table">
+        <tr>
+          <td><%= link_to image_tag(following.get_profile_image(100,100)), following_path(following.id) %></td>
+          <td><%= following.nickname %></td>
+          <td><%= following.sex %></td>
+        </tr>
+      </table>
+    <% end %>
+  </div>
+</div>

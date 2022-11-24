@@ -1,6 +1,23 @@
-<h1>投稿一覧</h1>
-<% @users.each do |user| %>
-  <p>会員ID: <%= user.id %></p>
-  <p>ニックネーム: <%= link_to user.nickname, admin_post_path(user.id) %></p>
-  <p>メールアドレス: <%= user.email %></p>
-<% end %>
+<div class="container">
+  <div class="row justify-content-center">
+    <h1>投稿一覧</h1>
+  </div>
+  <div class="row justify-content-center">
+    <table class= "table">
+      <tr>
+        <th>会員ID</th>
+        <th>ニックネーム</th>
+        <th>メールアドレス</th>
+      </tr>
+      <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= link_to user.nickname, admin_post_path(user.id) %></td>
+        <td><%= user.email %></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+
