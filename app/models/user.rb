@@ -12,6 +12,10 @@ class User < ApplicationRecord
 
   has_one_attached :profile_image
 
+  validates :nickname, presence: true
+  validates :birthday, presence: true
+  validates :sex, presence: true
+
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64

@@ -10,7 +10,7 @@ class Public::ItemsController < ApplicationController
 
   def index
     @users = User.all
-    @posts = current_user.posts
+    @posts = current_user.posts.order(created_at: :desc)
     @attentions = current_user.attentions
     @user = current_user
     @items = Item.all
