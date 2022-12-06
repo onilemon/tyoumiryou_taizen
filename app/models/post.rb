@@ -3,4 +3,4 @@ class Post < ApplicationRecord
   belongs_to :item
 end
 
-validates :comment, presence: true
+# validates :comment, presence: true

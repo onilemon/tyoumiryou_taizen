@@ -12,9 +12,9 @@ class Public::UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update(user_params)
-    redirect_to user_path
+      redirect_to user_path
     else
-    render :edit
+      render :edit
     end
   end
 
@@ -29,13 +29,13 @@ class Public::UsersController < ApplicationController
     flash[:notice] = "退会処理を実行いたしました"
     redirect_to root_path
   end
-  
+
   private
 
   def user_params
     params.require(:user).permit(:nickname, :email, :birthday, :sex)
   end
-  
+
   def guest_sign_in
     user = User.guest
     sign_in user

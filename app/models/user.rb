@@ -6,8 +6,8 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
-  has_many :followings, through: :relationships, source: :followed
-  has_many :followers, through: :reverse_of_relationships, source: :follower
+  has_many :followings, through: :relationships, source: :followed, dependent: :destroy
+  has_many :followers, through: :reverse_of_relationships, source: :follower, dependent: :destroy
   has_many :attentions, dependent: :destroy
 
   has_one_attached :profile_image
@@ -19,6 +19,9 @@ class User < ApplicationRecord
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
+      user.nickname = 'ゲストユーザー'
+      user.birthday = '50'
+      user.sex = '男'
     end
   end
 

@@ -8,13 +8,20 @@ class Public::PostsController < ApplicationController
 
   def create
     @post = current_user.posts.new(post_params)
-    @post.star = params[:score]
-    if @post.save
-      Attention.find_by(item_id: @post.item_id)&.destroy
-      redirect_to items_path
+    post_data = current_user.posts.find_by(item_id: @post.item_id)
+    if post_data.nil?
+      @post.star = params[:score]
+      unless @post.save
+        render :new
+      end
     else
-      render :new
+      post_data.star = params[:score]
+      unless post_data.update(post_params)
+        render :new
+      end
     end
+    Attention.find_by(item_id: @post.item_id)&.destroy
+    redirect_to items_path
   end
 
   def index
@@ -32,7 +39,14 @@ class Public::PostsController < ApplicationController
     @posts = Item.find(params[:id]).posts
   end
 
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to items_path
+  end
+
 private
+
   def post_params
     params.require(:post).permit(:comment, :star, :item_id)
   end

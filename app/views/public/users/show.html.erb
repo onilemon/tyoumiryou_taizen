@@ -5,8 +5,11 @@
   <div class="row justify-content-center">
     <div class="row flex-column">
     <h4>登録情報</h4>
-    <div><%= link_to "編集する", edit_user_path(@user.id), class: "btn btn-sm btn-success" %>
-      <%= link_to "退会する", users_unsubscribe_path, class: "btn btn-sm btn-danger" %>
+    <div>
+      <% unless @user.email == "guest@example.com" %>
+        <%= link_to "編集する", edit_user_path(@user.id), class: "btn btn-sm btn-success" %>
+        <%= link_to "退会する", users_unsubscribe_path, class: "btn btn-sm btn-danger" %>
+      <% end %>
     </div>
       <p><%= image_tag @user.get_profile_image(100,100) %></p>
       <p>ニックネーム: <%= @user.nickname %></p>

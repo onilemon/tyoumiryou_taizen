@@ -10,7 +10,6 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root to: 'homes#top'
-    post "use" => "uses#use"
     post "attention" => "attentions#attention"
     get "search" => "searches#search"
     get "/about" => "homes#about"
@@ -19,7 +18,7 @@ Rails.application.routes.draw do
     resources :items do
       resource :attentions, only: [:destroy]
     end
-    resources :posts, only: [:create, :index, :show]
+    resources :posts, only: [:create, :index, :show, :destroy]
     get "post/:item_id" => "posts#new", as: "new_post"
     resources :users do
       resource :relationships

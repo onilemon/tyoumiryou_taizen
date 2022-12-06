@@ -7,8 +7,8 @@ class Public::AttentionsController < ApplicationController
     else
       item_attention_paramas["item_ids"].each do |item_id|
       current_user.attentions.find_or_create_by(item_id: item_id)
+    end
       redirect_to items_path
-      end
     end
   end
 

@@ -2,15 +2,15 @@
   <div class="row justify-content-start">
     <%= form_with url: attention_path, method: :post, local: true do |f| %>
       <% @items.each do |item| %>
-      <%= f.check_box :item_ids, { multiple: true }, item.id, false %>
-      <%= image_tag item.image, size: "100x100" %>
-      <p>商品名</p>
-      <%= item.name %>
-      <p>商品説明</p>
-      <%= item.introduction %><br>
+        <%= f.check_box :item_ids, { multiple: true }, item.id, false %>
+        <%= image_tag item.image, size: "100x100" %>
+        <p>商品名</p>
+          <%= item.name %>
+        <p>商品説明</p>
+          <%= item.introduction %><br>
       <% end %>
       <%= f.submit "気になる調味料に追加", class: "btn btn-sm btn-success" %>
-      <p>※チェックを入れてから追加ボタンを押してください</p>
+      <p class = "text-danger">※チェックを入れてから追加ボタンを押してください</p>
     <% end %>
   </div>
 </div>

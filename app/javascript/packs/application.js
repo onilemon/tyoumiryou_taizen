@@ -10,7 +10,7 @@ import "channels"
 import 'jquery'
 
 Rails.start()
-Turbolinks.start()
+// Turbolinks.start()
 ActiveStorage.start()
 
 import Raty from "./raty.js"

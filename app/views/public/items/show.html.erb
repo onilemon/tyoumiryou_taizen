@@ -20,13 +20,14 @@
        raty(elem,opt);
      </script>
     </div>
-     <div class="form-group">
-      <div><label class="form-label">コメント</label></div>
-       <div><%= @post.comment %></div>
-     </div>
-      <div class="form-group">
-       <%= link_to "編集する", edit_item_path(@item.id), data: { "turbolinks" => false }, class: "btn btn-sm btn-success" %>
-      </div>
+    <div class="form-group">
+     <div><label class="form-label">コメント</label></div>
+      <div><%= @post.comment %></div>
+    </div>
+    <div class="form-group">
+     <%= link_to "編集する", edit_item_path(@item.id), data: { "turbolinks" => false }, class: "btn btn-success" %>
+     <%= link_to "削除する", post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
+    </div>
    </div>
   </div>
  </div>
