@@ -1,4 +1,3 @@
-if Rails.env.development?
   Admin.create!(
      email: 'a@a',
      password: '123456'
@@ -22,7 +21,6 @@ if Rails.env.development?
   users_attributes.each do |attr|
     User.create!(attr)
   end
-end
 
 genres = ["塩", "甘味", "酢", "醤油", "味噌", "ドレッシング", "ソース", "辛味", "スパイス"]
 
