@@ -66,16 +66,16 @@ ActiveRecord::Schema.define(version: 2022_11_07_115358) do
   end
 
   create_table "items", force: :cascade do |t|
-    t.integer "genre_id", null: false
+    t.integer "genre_id", default: 0, null: false
     t.string "name", default: "", null: false
-    t.text "introduction", default: "", null: false
+    t.text "introduction"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "posts", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "item_id", null: false
+    t.integer "user_id", default: 0, null: false
+    t.integer "item_id", default: 0, null: false
     t.string "comment", default: "", null: false
     t.integer "star", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
