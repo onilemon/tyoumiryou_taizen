@@ -18,6 +18,10 @@ users_data = [
   ["クロ", "q@q", "35", "秘密"]
 ]
 
+genres = ["塩", "甘味", "酢", "醤油", "味噌", "ドレッシング", "ソース", "辛味", "スパイス"]
+
+genres.each{ |genre| Genre.create!(name: genre) }
+
 Item.create!(
   [
     {
@@ -88,8 +92,3 @@ end
 users_attributes.each do |attr|
   User.create!(attr)
 end
-
-
-genres = ["塩", "甘味", "酢", "醤油", "味噌", "ドレッシング", "ソース", "辛味", "スパイス"]
-
-genres.each{ |genre| Genre.create!(name: genre) }
