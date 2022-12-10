@@ -11,8 +11,8 @@
       <p>商品説明</p>
         <%= f.text_area :introduction, class: 'form-control',size: "5x5" %>
       <p>ジャンル</p>
-        <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい", class: "mb-4" %><br>
-        <%= f.submit '編集を保存', class: "btn btn-success" %>
+        <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい" %><br>
+        <%= f.submit '編集を保存', class: "btn btn-success mt-4" %>
     <% end %>
   </div>
 </div>

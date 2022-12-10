@@ -18,7 +18,7 @@ users_data = [
   ["クロ", "q@q", "35", "秘密"]
 ]
 
-item.create!(
+Item.create!(
   [
     {
       name: "あごだししょうゆ",
