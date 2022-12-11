@@ -8,9 +8,24 @@ class Public::PostsController < ApplicationController
 
   def create
     @post = current_user.posts.new(post_params)
+    @item = Item.find(params[:post][:item_id])
+    if params[:post][:comment].blank? and  params[:score].blank?
+      flash[:notice] = "評価とコメントがされてません"
+      render :new
+      return
+    end
+
+    if params[:post][:comment].blank?
+      flash[:notice] = "コメントがされてません"
+      render :new
+      return
+    end
 
     if params[:score].blank?
       star = 0
+      flash[:notice] = "評価がされてません"
+      render :new
+      return
     else
       star = params[:score]
     end
