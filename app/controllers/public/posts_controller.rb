@@ -8,9 +8,17 @@ class Public::PostsController < ApplicationController
 
   def create
     @post = current_user.posts.new(post_params)
+
+    if params[:score].blank?
+      star = 0
+    else
+      star = params[:score]
+    end
+
     post_data = current_user.posts.find_by(item_id: @post.item_id)
+
     if post_data.nil?
-      @post.star = params[:score]
+      @post.star = star
       unless @post.save
         render :new
       end

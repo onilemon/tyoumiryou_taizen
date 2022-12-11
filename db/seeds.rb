@@ -18,6 +18,18 @@ users_data = [
   ["クロ", "q@q", "35", "秘密"]
 ]
 
+users_attributes = users_data.map do |data|
+  { nickname: data[0],
+    email: data[1],
+    password: "password",
+    birthday: data[2],
+    sex: data[3]}
+end
+
+users_attributes.each do |attr|
+  User.create!(attr)
+end
+
 genres = ["塩", "甘味", "酢", "醤油", "味噌", "ドレッシング", "ソース", "辛味", "スパイス"]
 
 genres.each{ |genre| Genre.create!(name: genre) }
@@ -81,14 +93,3 @@ Item.create!(
   ]
 )
 
-users_attributes = users_data.map do |data|
-  { nickname: data[0],
-    email: data[1],
-    password: "password",
-    birthday: data[2],
-    sex: data[3]}
-end
-
-users_attributes.each do |attr|
-  User.create!(attr)
-end
