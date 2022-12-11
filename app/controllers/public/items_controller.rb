@@ -42,10 +42,32 @@ class Public::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @post = current_user.posts.find_by(item_id: @item.id)
     @post.star = params[:score]
+
+    if params[:post][:comment].blank? and  params[:score].blank?
+      flash[:notice] = "評価とコメントがされてません"
+      render :edit
+      return
+    end
+
+    if params[:post][:comment].blank?
+      flash[:notice] = "コメントがされてません"
+      render :edit
+      return
+    end
+
+    if params[:score].blank?
+      star = 0
+      flash[:notice] = "評価がされてません"
+      render :edit
+      return
+    else
+      star = params[:score]
+    end
+
     if @post.update(post_params)
       redirect_to item_path(@item.id)
     else
-      render edit
+      render :edit
     end
   end
 
