@@ -4,32 +4,40 @@
       <h1 class="font-weight-normal mt-3">気になる調味料</h1>
     </div>
     <div class="row justify-content-center">
-     <%= form_with model: @post, url: posts_path, method: :post, local: true do |f| %>
       <div><%= image_tag @item.image, size: "200x200" %></div>
-      <label class="form-label">
-        評価：
-        <span id="post_raty"></span>
-        <span id="hint2"></span>
-      </label>
-      <script>
-       let elem = document.querySelector('#post_raty');
-       let opt = {
-        starOn: "<%= asset_path('star-on.png') %>",
-        starOff: "<%= asset_path('star-off.png') %>",
-        target: '#hint2',
-        targetType: 'number'
-        };
-        raty(elem,opt);
-      </script>
-      <div class="form-group">
-       <label class="form-label">コメント</label>
+      商品名：<strong><%= @item.name %></strong>
+    </div>
+    <div class="row justify-content-center">
+      <div class="item-introduction">
+        <%= @item.introduction %>
       </div>
-      <div class="form-group">
-       <%= f.text_area :comment %>
-       <%= f.hidden_field :item_id %>
-      </div>
-      <%= f.submit "投稿する", class: "btn btn-sm btn-success" %>
-     <% end %>
+    </div>
+    <div class="row justify-content-center">
+      <%= form_with model: @post, url: posts_path, method: :post, local: true do |f| %>
+        <label class="form-label">
+          評価：
+          <span id="post_raty"></span>
+          <span id="hint2"></span>
+        </label>
+        <script>
+         let elem = document.querySelector('#post_raty');
+         let opt = {
+          starOn: "<%= asset_path('star-on.png') %>",
+          starOff: "<%= asset_path('star-off.png') %>",
+          target: '#hint2',
+          targetType: 'number'
+          };
+          raty(elem,opt);
+        </script>
+        <div class="form-group">
+         <label class="form-label">コメント</label>
+        </div>
+        <div class="form-group">
+         <%= f.text_area :comment %>
+         <%= f.hidden_field :item_id %>
+        </div>
+        <%= f.submit "投稿する", class: "btn btn btn-success" %>
+      <% end %>
     </div>
   </div>
 </div>

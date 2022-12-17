@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  # validationでメールアドレス、パスワードより先にニックネームのエラーを出したいためにここに記載する
+  validates :nickname, presence: true
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -12,7 +15,6 @@ class User < ApplicationRecord
 
   has_one_attached :profile_image
 
-  validates :nickname, presence: true
   validates :birthday, presence: true
   validates :sex, presence: true
 
