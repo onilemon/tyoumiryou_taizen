@@ -4,8 +4,10 @@
       <h1 class="font-weight-normal mt-3">気になる調味料</h1>
     </div>
     <div class="row justify-content-center">
-      <div><%= image_tag @item.image, size: "200x200" %></div>
-      商品名：<strong><%= @item.name %></strong>
+      <div class="row flex-column">
+        <div><%= image_tag @item.image, size: "200x200" %></div>
+        <strong>商品名：<%= @item.name %></strong>
+      </div>
     </div>
     <div class="row justify-content-center">
       <div class="item-introduction">

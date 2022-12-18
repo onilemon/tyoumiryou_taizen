@@ -3,8 +3,18 @@
    <h2>編集画面</h2>
   </div>
   <div class="row justify-content-center">
-   <%= form_with model: @post, url: item_path, method: :patch, local: true do |f| %>
+   <div class="row flex-column">
     <%= image_tag @item.image, size: "200x200" %>
+    <strong>商品名：<%= @item.name %></strong>
+   </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="item-introduction">
+      <%= @item.introduction %>
+    </div>
+  </div>
+   <div class="row justify-content-center">
+    <%= form_with model: @post, url: item_path, method: :patch, local: true do |f| %>
      <div><label>評価：</label></div>
      <div>
       <span id="post_raty"></span>
@@ -17,13 +27,14 @@
        starOff: "<%= asset_path('star-off.png') %>",
        target: '#hint2',
        targetType: 'number',
+       score: <%= @post.star %>
        };
        raty(elem,opt);
      </script>
      <%= f.label "コメント" %><br>
-     <%= f.text_area :comment %>
-     <%= f.hidden_field :item_id %><br>
+     <%= f.text_area :comment %><br>
      <%= f.submit "編集する", class: "btn btn-sm btn-success" %>
-   <% end %>
+    <% end %>
+   </div>
   </div>
 </div>

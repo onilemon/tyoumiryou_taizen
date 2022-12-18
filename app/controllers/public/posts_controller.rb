@@ -48,13 +48,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    all_items = Item.all
-    @items = Post.group(:item_id).average(:star).map do |k, v|
-      item = all_items.find_by(id: k)
-      item.average = v.to_f.round(1)
-      item
-    end
-    @items = @items.sort_by{|o| o.average }.reverse
+    @items = Item.joins(:posts).group(:id).order("AVG(posts.star) desc")
   end
 
   def show

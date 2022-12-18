@@ -9,7 +9,8 @@
         <th>ニックネーム</th>
         <th>評価</th>
         <th>コメント</th>
-        <th></th>
+        <th>投稿日</th>
+        <td></td>
       </tr>
       <% @posts.each do |user_post| %>
         <tr>
@@ -18,8 +19,8 @@
           <td>
             <div id="post_raty-<%= user_post.id %>"></div>
              <script>
-              var elem = document.querySelector('#post_raty-<%= user_post.id %>');
-              var opt = {
+              let elem = document.querySelector('#post_raty-<%= user_post.id %>');
+              let opt = {
                starOn: "<%= asset_path('star-on.png') %>",
                starOff: "<%= asset_path('star-off.png') %>",
                readOnly: true,
@@ -29,6 +30,7 @@
              </script>
           </td>
           <td><%= user_post.comment %></td>
+          <td><%= user_post.created_at.strftime('%Y/%m/%d') %></td>
           <td>
             <% if current_user.id != user_post.user.id %>
               <% if current_user.following?(user_post.user) %>

@@ -10,6 +10,7 @@ class Admin::GenresController < ApplicationController
       redirect_to admin_genres_path
     else
       @genres = Genre.all
+      flash[:notice] = "ジャンルを入力して下さい"
       render :index
     end
   end
@@ -23,7 +24,7 @@ class Admin::GenresController < ApplicationController
     @genre.update(genre_params)
     redirect_to admin_genres_path(@genre.id)
   end
-  
+
   def destroy
     @genre = Genre.find(params[:id])
     @genre.destroy
