@@ -7,8 +7,8 @@
           <td><%= image_tag item.image, size: "100x100" %></td>
           <td><%= i %>位</td>
           <td><%= item.name %></td>
-          <td>評価<%= item.posts.average(:star) %></td>
-          <td><%= link_to "みんなの評価コメント", post_path(item.id) %><br></td>
+          <td>評価<%= item.posts.average(:star).round(1) %></td>
+          <td><%= link_to "みんなの評価コメント", post_path(item.id) %></td>
         </tr>
       <% end %>
     </table>

@@ -34,3 +34,11 @@ header {
 .align_middle td {
   vertical-align: middle;
 }
+
+.ranking-status td div {
+  width: 200px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+

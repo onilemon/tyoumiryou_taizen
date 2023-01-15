@@ -3,7 +3,7 @@
     <h2>コメント一覧</h2>
   </div>
   <div class="row justify-content-center">
-    <table class= "table">
+    <table class= "table ranking-status">
       <tr>
         <th></th>
         <th>ニックネーム</th>
@@ -29,7 +29,7 @@
                raty(elem,opt);
              </script>
           </td>
-          <td><%= user_post.comment %></td>
+          <td><div><%= user_post.comment %></div></td>
           <td><%= user_post.created_at.strftime('%Y/%m/%d') %></td>
           <td>
             <% if current_user.id != user_post.user.id %>
