@@ -3,7 +3,7 @@
     <h2>コメント一覧</h2>
   </div>
   <div class="row justify-content-center">
-    <table class= "table ranking-status">
+    <table class= "table comment-status">
       <tr>
         <th></th>
         <th>ニックネーム</th>
@@ -19,8 +19,8 @@
           <td>
             <div id="post_raty-<%= user_post.id %>"></div>
              <script>
-              let elem = document.querySelector('#post_raty-<%= user_post.id %>');
-              let opt = {
+              var elem = document.querySelector('#post_raty-<%= user_post.id %>');
+              var opt = {
                starOn: "<%= asset_path('star-on.png') %>",
                starOff: "<%= asset_path('star-off.png') %>",
                readOnly: true,

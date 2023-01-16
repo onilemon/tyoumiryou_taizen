@@ -4,18 +4,34 @@
   </div>
   <div class="row justify-content-center">
     <div class="row flex-column">
-    <h4>登録情報</h4>
-    <div>
-      <% unless @user.email == "guest@example.com" %>
-        <%= link_to "編集する", edit_user_path(@user.id), class: "btn btn-sm btn-success" %>
-        <%= link_to "退会する", users_unsubscribe_path, class: "btn btn-sm btn-danger" %>
-      <% end %>
-    </div>
-      <p><%= image_tag @user.get_profile_image(100,100) %></p>
-      <p>ニックネーム: <%= @user.nickname %></p>
-      <p>メールアドレス:<%= @user.email %></p>
-      <p>年齢: <%= @user.birthday %>歳</p>
-      <p>性別: <%= @user.sex %></p>
+      <h4>登録情報</h4>
+      <table class="table table-bordered">
+        <tr>
+          <td>
+            <% unless @user.email == "guest@example.com" %>
+              <%= link_to "編集する", edit_user_path(@user.id), class: "btn btn-sm btn-success" %>
+          </td>
+          <td>
+              <%= link_to "退会する", users_unsubscribe_path, class: "btn btn-sm btn-danger" %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td colspan= "2"><%= image_tag @user.get_profile_image(100,100) %></td>
+        </tr>
+        <tr>
+          <td colspan= "2">ニックネーム: <%= @user.nickname %></td>
+        </tr>
+        <tr>
+          <td colspan= "2">メールアドレス:<%= @user.email %></td>
+        </tr>
+        <tr>
+          <td colspan= "2">年齢: <%= @user.birthday %>歳</td>
+        </tr>
+        <tr>
+          <td colspan= "2">性別: <%= @user.sex %></td>
+        </tr>
+      </table>
     </div>
   </div>
 </div>

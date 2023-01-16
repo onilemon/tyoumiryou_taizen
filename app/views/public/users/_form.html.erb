@@ -1,7 +1,23 @@
-<p><%= image_tag @user.get_profile_image(100,100) %></p>
-<p>ニックネーム: <%= @user.nickname %></p>
-<p>メールアドレス:<%= @user.email %></p>
-<p>年齢: <%= @user.birthday %>歳</p>
-<p>性別: <%= @user.sex %></p>
-<p><%= link_to @user.followings.count, followings_path %> フォロー</p>
-<p><%= link_to @user.followers.count, followers_path %> フォロワー</p>
+<table class="table table-bordered">
+  <tr>
+    <td><%= image_tag @user.get_profile_image(100,100) %></td>
+  </tr>
+  <tr>
+    <td>ニックネーム: <%= @user.nickname %></td>
+  </tr>
+  <tr>
+    <td>メールアドレス: <%= @user.email %></td>
+  </tr>
+  <tr>
+    <td>年齢: <%= @user.birthday %>歳</td>
+  </tr>
+  <tr>
+    <td>性別: <%= @user.sex %></td>
+  </tr>
+  <tr>
+    <td><%= link_to @user.followings.count, followings_path %> フォロー</td>
+  </tr>
+  <tr>
+    <td><%= link_to @user.followers.count, followers_path %> フォロワー</td>
+  </tr>
+</table>

@@ -28,17 +28,20 @@ body {
 }
 
 header {
-  background-color: gray;
+  background-color: orange;
 }
 
 .align_middle td {
   vertical-align: middle;
 }
 
-.ranking-status td div {
-  width: 200px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+.comment-status td div {
+  width: 250px;
 }
 
+.table-bordered td {
+  border-width: 10px;
+  border-color: orange;
+  vertical-align: middle;
+
+}
