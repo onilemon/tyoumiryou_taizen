@@ -13,15 +13,11 @@ class Public::PostsController < ApplicationController
       flash[:notice] = "評価とコメントがされてません"
       render :new
       return
-    end
-
-    if params[:post][:comment].blank?
+    elsif params[:post][:comment].blank?
       flash[:notice] = "コメントがされてません"
       render :new
       return
-    end
-
-    if params[:score].blank?
+    elsif params[:score].blank?
       star = 0
       flash[:notice] = "評価がされてません"
       render :new

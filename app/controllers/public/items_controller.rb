@@ -19,8 +19,7 @@ class Public::ItemsController < ApplicationController
       @items.each do |item|
         current_user.attentions.find_or_create_by(item: item)
       end
-    end
-    if params[:keyword].present?
+    elsif params[:keyword].present?
       @items = @items.where("name like ?", "%#{params[:keyword]}%")
       @items.each do |item|
         current_user.attentions.find_or_create_by(item: item)
@@ -47,15 +46,11 @@ class Public::ItemsController < ApplicationController
       flash[:notice] = "評価とコメントがされてません"
       render :edit
       return
-    end
-
-    if params[:post][:comment].blank?
+    elsif params[:post][:comment].blank?
       flash[:notice] = "コメントがされてません"
       render :edit
       return
-    end
-
-    if params[:score].blank?
+    elsif params[:score].blank?
       star = 0
       flash[:notice] = "評価がされてません"
       render :edit
