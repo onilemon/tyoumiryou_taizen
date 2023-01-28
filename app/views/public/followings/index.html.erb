@@ -4,15 +4,20 @@
   </div>
   <div class="row justify-content-center">
     <% if @followings.exists? %>
-      <% @followings.each do |following| %>
-        <table class="table">
-          <tr>
-            <td><%= link_to image_tag(following.get_profile_image(100,100)), following_path(following.id) %></td>
-            <td><%= following.nickname %></td>
-            <td><%= following.sex %></td>
-          </tr>
-        </table>
-      <% end %>
+      <table class="table">
+        <tr>
+          <th></th>
+          <th>名前</th>
+          <th>年齢</th>
+        </tr>
+        <% @followings.each do |following| %>
+        <tr>
+          <td><%= link_to image_tag(following.get_profile_image(100,100)), following_path(following.id) %></td>
+          <td><%= following.nickname %></td>
+          <td><%= following.sex %></td>
+        </tr>
+        <% end %>
+      </table>
     <% else %>
       <h4>ユーザーはいません</h4>
     <% end %>
