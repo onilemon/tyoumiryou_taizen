@@ -2,7 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 .header_title {
-  //font-family: "Nikukyu,sans-serif";
   font-family: 'Potta One', cursive;
   font-size: 200px;
 }
@@ -20,4 +19,27 @@
 .text-center {
   display: table-cell;
   vertical-align: middle;
+}
+
+.background-image {
+  height: 100%;
+  width: 100%;
+  display: table;
+  background-image: asset-url("tyoumiryou_topmain.jpg");
+  background-color:rgba(255,255,255,0.6);
+  background-blend-mode:lighten;
+  background-size: 100% 100%;
+}
+
+.about-title {
+  font-size: 50px;
+  font-weight: bold;
+  margin: 70px 0;
+}
+
+.about-text {
+  font-size: 30px;
+  text-align: center;
+  font-weight: bold;
+  line-height: 100px;
 }
